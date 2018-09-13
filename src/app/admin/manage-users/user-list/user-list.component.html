@@ -1,0 +1,43 @@
+<section title="user lists">
+  <h3>Users</h3>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>role</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td> {{user.role}}</td>
+          <td>
+            <button class="btn btn-outline-danger" (click)="confirmBeforeDeleteUser(user, vModal)">
+              <span class="ion ion-md-trash"></span> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+
+<!-- - - - - - - - Modal Template - - - - - - - -->
+<ng-template #vModal let-modal let-c="close" let-d="dismiss">
+  <div class="modal-header bg-danger text-white">
+    <h4 class="modal-title" id="modal-basic-title">Important!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close({delete:true})">Yes</button>
+  </div>
+</ng-template>

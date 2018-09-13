@@ -1,0 +1,14 @@
+.active,
+.active .nav-link {
+  background-color: blue;
+}
+.nav-item {
+  background-color: grey;
+  margin: 2px 0;
+}
+.app-nav-bar {
+  margin-top: 5vh;
+}
+.app-nav-bar * {
+  color: white;
+}

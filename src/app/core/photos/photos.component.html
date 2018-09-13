@@ -1,0 +1,32 @@
+<section>
+  <div>
+    <h1>From Our Gallary</h1>
+    <ul class="row list-unstyled">
+      <li *ngFor="let photo of photos; let i=index">
+        <div class="col">
+          <figure class="figure" (click)="lightBox(photo, vModal)">
+            <img [src]="photo.url" class="figure-img img-fluid rounded">
+            <figcaption class="figure-caption"> {{ photo.description}} </figcaption>
+          </figure>
+          <div *ngIf="i%2===0 " class="w-100"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- - - - - - - - Modal Template - - - - - - - -->
+<ng-template #vModal let-modal let-c="close" let-d="dismiss">
+  <div class="modal-header bg-dark text-white">
+    <h4 class="modal-title" id="modal-basic-title"> {{(selectedPhoto.name).substr(0,selectedPhoto.name.lastIndexOf('.'))}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="text-white" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img [src]="selectedPhoto.url" class="img-fluid rounded">
+  </div>
+  <div class="text-left pl-3">
+    {{selectedPhoto.description}}
+  </div>
+</ng-template>
